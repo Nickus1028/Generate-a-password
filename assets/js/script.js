@@ -12,7 +12,7 @@ function generatePassword() {
   } else if (passwordLength > 128) {
     passwordLength = '';
     passwordLength = prompt("Password is too long. How long is your new password? (Between 8 or 128 characters)");
-  } else {
+  } else if (isNaN(passwordLength)){
     passwordLength = '';
     passwordLength = prompt("You must select a number. How long is your new password? (Between 8 or 128 characters)");
   }
