@@ -1,19 +1,9 @@
-// Assignment code here
-//Welcome Them To The Password Generator
-//Ask for password length > Variable
-//Ask for lowercase > Variable
-//Ask for uppercase > variable
-//Ask for number > variable
-//Ask for special characters > variable
-
 //Run loop to generate password
 
-getInformation();
+function generatePassword() {
+  window.alert("Welcome to the Marvelous Password Generator!");
 
-//Gather the requirements of our Passoword
-
-function getInformation() {
-  window.alert("Welcome to the Marvelous Passoword Generatior!");
+  //Gather the requirements of our Password
   
   passwordLength = prompt("How long is your new password? (Between 8 or 128 characters)");
   if (passwordLength < 8) {
@@ -30,32 +20,33 @@ function getInformation() {
   passwordSpecial = confirm("Press OK if you want special characters in your password.");
   window.alert("Your password is being created!");
   
+  var password = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$'
+  
+  //Create the password
+
+  for(var i = 0; i < passwordLength; i++) {
+        var character = Math.floor(Math.random() * characters.length + 1);
+        password += characters.charAt(character);
+  }
+
+ 
+  return password;
 }
 
-//Confirm we get intended information throught the console
 
-console.log(passwordLength);
-console.log(passwordLowercase);
-console.log(passwordUppercase);
-console.log(passwordNumbers);
-console.log(passwordSpecial);
+// Displays password to the HTML page under the password ID
+    
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-//Generate our password
-
-function generatePassword () {
-    var password = '';
-    var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$'
-    for(var i = 0; i < passwordLength; i++) {
-      var character = math.floor(math.random() * characters.length + 1);
-      password += characters.charAt(character);
-    }
+  passwordText.value = password;
 }
-
-console.log(password);
 
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", getInformation)
+generateBtn.addEventListener("click", writePassword)
