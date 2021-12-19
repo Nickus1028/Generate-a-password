@@ -19,9 +19,24 @@ function generatePassword() {
   passwordNumbers = confirm("Press OK if you want numbers in your password.");
   passwordSpecial = confirm("Press OK if you want special characters in your password.");
   window.alert("Your password is being created!");
+
   
+  // Create the pool of characters for our password based on input
+
   var password = '';
-  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$'
+  var characters = '';
+  if (passwordLowercase) {
+    characters = characters + 'abcdefghijklmnopqrstuvwxyz'
+  }
+  if (passwordUppercase) {
+    characters = characters + 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  }
+  if (passwordNumbers) {
+     characters = characters + '0123456789';
+  }
+  if (passwordSpecial) {
+    characters = characters + '!@#$%^&*';
+  }
   
   //Create the password
 
